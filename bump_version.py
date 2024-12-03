@@ -43,7 +43,7 @@ def all_commits_up_to_tag(repo: Repo, tag: TagReference = None) -> Iterable[Comm
         yield commit
 
 
-def comput_version_increment_from(commits: Iterable[Commit]) -> Tuple[VersionIncrement, int]:
+def compute_version_increment_from(commits: Iterable[Commit]) -> Tuple[VersionIncrement, int]:
     major_changes, minor_changes, patch_changes, dev_changes = 0, 0, 0, 0
     for index, commit in enumerate(commits):
         log(f"{index + 1}. {commit.hexsha}: `{commit.summary.strip()}`")
@@ -104,6 +104,6 @@ if __name__ == '__main__':
         current_version = get_current_version()
         log(f"From commit {last_tag.commit.hexsha} (corresponding to v`{current_version}`, according to Poetry):")
         commits = all_commits_up_to_tag(repo, )
-        version, n_changes = comput_version_increment_from(commits)
+        version, n_changes = compute_version_increment_from(commits)
         actually_apply = "--apply" in sys.argv
         update_version(last_tag.name, version, n_changes, actually_apply)

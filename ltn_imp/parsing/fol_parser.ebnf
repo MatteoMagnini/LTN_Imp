@@ -130,13 +130,13 @@ negative
 index
     = @:variable '[' @:feature ']'
     ;
-    
+
 quantified
     = quantifier variables '.' expression
     ;
 
 quantifier
-    = 'forall' | 'exists' | 'all' 
+    = 'forall' | 'exists' | 'all'
     ;
 
 predicate
