@@ -325,7 +325,18 @@ class ExpressionVisitor(Visitor):
         return ConvertedExpression(expression, lambda variable_mapping: self.handle_indexing(variable_mapping, expression), self)
 
 class LTNConverter:
-    def __init__(self,yaml = None, scalers = {}, predicates={}, functions={}, connective_impls=None, quantifier_impls=None, declarations={}, declarers={}, device=torch.device("cpu")):
+    def __init__(self, yaml = None, scalers=None, predicates=None, functions=None, connective_impls=None, quantifier_impls=None,
+                 declarations=None, declarers=None, device=torch.device("cpu")):
+        if declarers is None:
+            declarers = {}
+        if declarations is None:
+            declarations = {}
+        if functions is None:
+            functions = {}
+        if predicates is None:
+            predicates = {}
+        if scalers is None:
+            scalers = {}
         self.predicates = predicates
         self.functions = functions
         self.connective_impls = connective_impls
