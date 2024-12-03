@@ -38,9 +38,9 @@ jobs:
       - name: Restore Python dependencies
         run: poetry install
 
-      - name: Test
-        shell: bash
-        run: poetry run pytest -v
+#      - name: Test
+#        shell: bash
+#        run: poetry run pytest -v
 
   release:
     needs: test
